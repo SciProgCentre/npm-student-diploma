@@ -1,0 +1,29 @@
+\chapter{Вывод метода}
+\label{sec:metod}
+
+Докажем формулу (\ref{eq:apriori}). Для поиска условного экстремума используем метод Лагранжа. Функция Лагранжа:
+\begin{equation}
+L(\vec{\varphi}, \lambda, \mu) = \ln{P(\vec{\varphi})} P(\vec{\varphi}) + \lambda (\vec{\varphi},\Omega\vec{\varphi}) P(\vec{\varphi}) + \mu P(\vec{\varphi})
+\end{equation}
+Подставляем её в уравнение Эйлера-Лагранжа:
+\begin{equation}
+\frac{\partial L}{\partial \varphi} = P'(\vec{\varphi})(1 + \ln{P(\vec{\varphi})}  + \lambda (\vec{\varphi},\Omega\vec{\varphi}) + \mu ) = 0
+\end{equation}
+Получаем два варианта. Решение уравнения $P'(\vec{\varphi}) = 0$ не очень интересно, поскольку возвращает нас к равновероятным $\vec{\varphi}$ и не регуляризованному решению.
+Интересное решение:
+\begin{equation}
+P(\vec{\varphi}) = \exp(-1 + \mu + \lambda (\vec{\varphi},\Omega\vec{\varphi}))
+\label{eq:eqlagr}
+\end{equation}
+Обычно следует подставить эту функцию в условия и получить значения параметров $\lambda$ и $\mu$. Но мы пойдем другим путем. Сделаем замену переменных: $\lambda = -\frac{\alpha}{2}$, $ C=\exp(-1 + \mu)$ и подставим в (\ref{eq:eqlagr}):
+\begin{equation}
+P(\vec{\varphi}) = C\exp(-\frac{\alpha}{2} (\vec{\varphi},\Omega\vec{\varphi}))
+\end{equation}
+Сравним полученную формулу с многомерным гаусоввым распределением:
+\begin{equation}
+f_X(\vec{x}) = \frac{1}{(2\pi)^{n/2}|\Sigma|^{1/2}} \exp(-\frac{1}{2}(\vec{x} - \vec{\mu})^T\Sigma^{-1}(\vec{x} - \vec{\mu}))
+\end{equation}
+Отсюда можно сделать вывод: $C =  \frac{1}{(2\pi)^{N/2}|\Sigma|^{1/2}}$, $\Sigma^{-1} = \alpha\Omega$, $|\Sigma| = \frac{1}{|\Sigma^{-1}|} = \frac{1}{\alpha^{Rg(\Omega)}|\Omega|}$, а:
+\begin{equation}
+P_{\alpha}(\vec{\varphi})  = \frac{\alpha^{Rg(\Omega)/2}\det\Omega^{1/2}}{(2\pi)^{N/2}} \exp(-\frac{1}{2} (\vec{\varphi},\alpha\Omega\vec{\varphi}))
+\end{equation}

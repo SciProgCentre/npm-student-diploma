@@ -1,0 +1,128 @@
+% !TeX program = LuaLaTeX
+\documentclass[a4paper,14pt,russian]{extreport}
+ 
+\usepackage{fontspec}
+\usepackage[abspath]{currfile}
+\setmainfont[
+  Path          = \currfileabsdir,
+  Ligatures     = TeX,
+  UprightFont   = fonts/times.ttf,
+  BoldItalicFont= fonts/timesbi.ttf,
+  BoldFont      = fonts/timesbd.ttf,
+  ItalicFont    = fonts/timesi.ttf
+]{Times New Roman}
+
+%\usepackage{extsizes}
+\usepackage[russian]{babel}
+\usepackage{indentfirst}
+
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{appendix}
+\usepackage{comment}
+
+\bibliographystyle{utf8gost705u}
+
+\linespread{1.4} % полуторный интервал
+%\renewcommand{\rmdefault}{ftm} % Times New Roman
+\frenchspacing
+
+% misc
+%\usepackage{fullpage}
+
+\usepackage{hyperref}
+
+% review
+\usepackage[textwidth=120]{todonotes}
+\usepackage{color}
+
+% graphics
+\usepackage{graphicx}
+
+% graphicx configuration
+\graphicspath{{image/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\setcounter{totalnumber}{10}
+\setcounter{topnumber}{10}
+
+\usepackage{titlesec} % стиль глав и секций
+ 
+\titleformat{\chapter}[display]
+    {\filcenter}
+    {\MakeUppercase{\chaptertitlename} \thechapter}
+    {8pt}
+    {}
+ 
+\titleformat{\section}
+    {\normalsize}
+    {\thesection}
+    {1em}{}
+ 
+\titleformat{\subsection}
+    {\normalsize}
+    {\thesubsection}
+    {1em}{}
+    
+\newcommand{\empline}{\mbox{}\newline}
+\newcommand{\likechapterheading}[1]{ 
+    \begin{center}
+    \textbf{\MakeUppercase{#1}}
+    \end{center}
+    \empline}
+    
+\makeatletter
+    \renewcommand{\@dotsep}{2}
+    \newcommand{\l@likechapter}[2]{{\bfseries\@dottedtocline{0}{0pt}{0pt}{#1}{#2}}}
+\makeatother
+\newcommand{\likechapter}[1]{    
+    \likechapterheading{#1}    
+    \addcontentsline{toc}{likechapter}{\MakeUppercase{#1}}}    
+
+% boarders
+\usepackage{geometry}
+\geometry{left=2.4cm}
+\geometry{right=2cm}
+\geometry{top=2cm}
+\geometry{bottom=2.5cm}
+
+% fixing numbering problem
+\usepackage{chngcntr}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+\counterwithout{equation}{chapter}
+
+\begin{document}
+
+\input{top}
+\newpage
+%\listoftodos
+\tableofcontents
+\newpage
+\input{introduction}
+\newpage
+\input{litReview}
+\newpage
+\input{metodologyReview}
+\input{practical}
+\newpage
+\input{picture_list}
+\newpage
+\input{conclusion}
+
+\newpage
+\renewcommand {\appendixtocname} {ПРИЛОЖЕНИЯ}
+\appendixtocon
+\begin{appendices}
+    \input{appendix_met_proof}
+    \input{appendix_gaus_proof}
+    \input{appendix_algebra}
+    \input{appendix_basis}
+    \input{appendix_functions}
+\end{appendices}
+
+
+\newpage
+\addcontentsline{toc}{chapter}{Литература}
+\bibliography{lit}
+\end{document}

@@ -1,0 +1,19 @@
+\chapter{Алгебраизация}
+\label{algebra}
+
+Для алгебраизации уравнения , мы разложим функцию $\varphi(x)$, по некоторой системе функций $\{T_n\}$:
+\begin{equation}
+\varphi(x) = \sum \limits_n \varphi_n T_n(x).
+\end{equation}
+Таким образом компонентами вектора $\vec{\varphi}$ являются коэффициенты этого разложения. Тогда элементы матрицы $K$, вычисляются как:
+\begin{equation}
+K_{mn} = \int\limits_a^b K(x,y_m)T_n(x)dx,
+\end{equation}
+а элементы матрицы $\Omega$ по формуле:
+\begin{equation}
+\Omega_{ij} = \int\limits_a^b \left(\frac{dT_i(x)}{dx}\right)\left(\frac{dT_j(x)}{dx}\right)dx. 
+\end{equation}
+Для пересчета ошибок следует использовать формулу дисперсии линейной комбинации случайных величин:
+\begin{equation}
+D[\varphi(x)] = D[\sum \limits_n \varphi_n T_n(x)] = \sum\limits_{i,j} \varphi_i\varphi_j cov(T_i(x), T_j(x)).
+\end{equation}

@@ -1,0 +1,19 @@
+\chapter{Некоторые функции}
+
+\section{Crystal Ball}\label{sec:crystalball}
+
+Функция Crystal Ball --- функция плотности вероятности, часто используемая для описания потерь энергии в физике высоких энергий.
+$$f(x;\alpha,n,\bar x,\sigma) = N \cdot \begin{cases} \exp(- \frac{(x - \bar x)^2}{2 \sigma^2}), & \mbox{for }\frac{x - \bar x}{\sigma} > -\alpha \\
+ A \cdot (B - \frac{x - \bar x}{\sigma})^{-n}, & \mbox{for }\frac{x - \bar x}{\sigma} \leq -\alpha \end{cases}$$
+где
+$$A = \left(\frac{n}{\left| \alpha \right|}\right)^n \cdot \exp\left(- \frac {\left| \alpha \right|^2}{2}\right),$$
+$$B = \frac{n}{\left| \alpha \right|}  - \left| \alpha \right|,$$
+$$N = \frac{1}{\sigma (C + D)},$$
+$$C = \frac{n}{\left| \alpha \right|} \cdot \frac{1}{n-1} \cdot \exp\left(- \frac {\left| \alpha \right|^2}{2}\right),$$
+$$D = \sqrt{\frac{\pi}{2}} \left(1 + \operatorname{erf}\left(\frac{\left| \alpha \right|}{\sqrt 2}\right)\right).$$
+В работе использовалась функция Crystal Ball с параметрами $\alpha=1, n=2, x_0=0, \sigma=1$.
+
+\section{Сигмоида}\label{sec:sigmoida}
+
+Сигмоида --- гладкая монотонная нелинейная функция, имеющая форму буквы "S". В нашем случае использовалась сигмоида вида:
+$$\sigma(x) = \frac{1}{1+e^{-x}}.$$

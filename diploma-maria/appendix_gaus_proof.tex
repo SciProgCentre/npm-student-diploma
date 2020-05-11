@@ -1,0 +1,39 @@
+\chapter{Вывод формул в гауссовом случае} \label{sec:gauss}
+
+Покажем что для определения наиболее вероятного $\alpha$ следует искать максимум функции (\ref{eq:alphamax}).По теореме Байеса:
+
+\begin{equation}
+	P(\alpha|\vec{f}) \sim P(\alpha)P(\vec{f}|\alpha),
+\end{equation}
+где
+\begin{equation}
+	\label{eq:prob_f_alpha}
+	P(\vec{f}|\alpha) = \int d\vec{\varphi} P(\vec{f}|\vec{\varphi})P(\vec{\varphi}|\alpha)
+\end{equation}
+
+Введем дополнительные обзначения: $b^T = \vec{f}^T\Sigma^{-1}K$, $B = K^T\Sigma^{-1}K$.
+Тогда: $\vec{f}^T\Sigma^{-1}\vec{f} = \vec{f}\Sigma^{-1}K^{T}K^{-1T}\Sigma^{T}\Sigma^{-1T} KK^{-1}\vec{f} = b^{T}B^{-1}b$, a:
+
+\begin{equation}
+	\label{eq:aposteoriphi}
+	P(\vec{f}|\vec{\varphi})P(\vec{\varphi}|\alpha) = \frac{\alpha^{Rg(\Omega)/2}\det\Omega^{1/2}}{(2\pi)^{(N+M)/2}|\Sigma|^{1/2}}\exp(-\frac{1}{2}b^{T}B^{-1}b) \exp(-\frac{1}{2} (\vec{\varphi},(B+\alpha\Omega)\vec{\varphi}) + b\vec{\varphi})
+\end{equation}
+
+Посчитаем интеграл (\ref{eq:prob_f_alpha}), воспользовавшись его сходством с многомерным нормальным распределением:
+
+\begin{equation}
+	P(\vec{f}|\alpha) = \frac{\alpha^{Rg(\Omega)/2}|\Omega^{1/2}|}{(2\pi)^{(M)/2}|\Sigma|^{1/2}}\exp(-\frac{1}{2}b^{T}B^{-1}b) \sqrt{|(B+\alpha\Omega)^{-1}|}\exp(\frac{1}{2}b^{T}(B+\alpha\Omega)^{-1}b)
+\end{equation}
+
+По теореме Байеса мы можем определить $P(\alpha|\vec{f})$ ($C$ не зависит от $\alpha$):
+
+\begin{equation}
+	\label{eq:alphaaposter}
+	P(\alpha|\vec{f}) = C \alpha^{\frac{Rg(\Omega)}{2}}\sqrt{|(B+\alpha\Omega)^{-1}|}\exp(-\frac{1}{2}b^{T}B^{-1}b)\exp(\frac{1}{2}b^{T}(B+\alpha\Omega)^{-1}b)
+\end{equation}
+
+Предпологая, что $P(\alpha|\vec{f})$ должно иметь узкий пик для некоторого $\alpha:*$, мы будем искать экстремум логарифма $P(\alpha|\vec{f})$:
+
+\begin{equation}
+	\ln{P(\alpha|\vec{f})} = \ln{C} + \frac{Rg(\Omega)}{2}\ln{\alpha} - \frac{1}{2}\ln{|B+\alpha\Omega|}  + \frac{1}{2}b^{T}(B+\alpha\Omega)^{-1}b
+\end{equation}
